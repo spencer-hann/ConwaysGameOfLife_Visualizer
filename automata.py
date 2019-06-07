@@ -7,7 +7,7 @@ from scipy.ndimage.filters import convolve
 import pyqtgraph as pg
 import pyqtgraph.opengl as gl
 
-automaton_dir = 'automaton_examples/'
+automaton_dir = 'examples/'
 
 load_automaton = False
 if len(sys.argv) > 1:
@@ -68,16 +68,17 @@ for i in range(-n//2,n//2):
 
 filter_ = np.ones((3,3,3))
 _life_flag = -100000 # a little hacky, but marks cell as alive or dead
+## This is a bug ## TODO
 filter_[1,1,1] = _life_flag # mark cell as alive or dead
-#filter_[0,:,:]
+###################
 
 def evaluate(
         cell,size,
         life_size = 16,
         dead_size = 0,
-        starvation_lim = 2,
-        overcrowded_lim = 3,
-        reproduction_val = 3,
+        starvation_lim = 8,
+        overcrowded_lim = 9,
+        reproduction_val = 4,
         ):
     if cell < 0: # l was alive
         cell -= _life_flag
@@ -147,7 +148,7 @@ def run_simulation(
             life[0:k,0:k,0:k] = randint(0,2,size=(k,k,k)) \
                                 * randint(0,2,size=(k,k,k)) \
                                 * randint(0,2,size=(k,k,k)) \
-                                * randint(0,2,size=(k,k,k)) \
+                                #* randint(0,2,size=(k,k,k)) \
 
         if time_last < time() - delay:
             time_last = time()
@@ -164,15 +165,15 @@ def run_simulation(
 if __name__ == "__main__":
     print('number of active cells:',life.sum())
     if load_automaton:
-        life = run_simulation(life)
+        life = run_simulation(life,delay=.2)
     else:
         life = run_simulation(
                     life,
-                    k=3,
+                    k=4,
                     breed=True,
                     delay=.0,
-                    gen_allowance=45,
-                    min_life=12,
+                    gen_allowance=30,
+                    min_life=10,
                     max_life=512,
                     )
 
