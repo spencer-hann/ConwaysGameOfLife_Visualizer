@@ -68,9 +68,7 @@ for i in range(-n//2,n//2):
 
 filter_ = np.ones((3,3,3))
 _life_flag = -100000 # a little hacky, but marks cell as alive or dead
-## This is a bug ## TODO
 filter_[1,1,1] = _life_flag # mark cell as alive or dead
-###################
 
 def evaluate(
         cell,size,
