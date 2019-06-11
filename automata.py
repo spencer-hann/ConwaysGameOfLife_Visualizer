@@ -119,8 +119,9 @@ def run_simulation(
         gen_allowance = 4,
         open_window = "max",
         orbit_speed = .1,
-        ):
+    ):
     color = (1,1,1,1) # all on / white
+    color = rand_color_tuple()
     size = np.zeros(life.shape)
     time_last = time()
     gen_counter = 0
@@ -163,7 +164,7 @@ def run_simulation(
 if __name__ == "__main__":
     print('number of active cells:',life.sum())
     if load_automaton:
-        life = run_simulation(life,delay=.2)
+        life = run_simulation(life,delay=.3)
     else:
         life = run_simulation(
                     life,
@@ -171,7 +172,7 @@ if __name__ == "__main__":
                     breed=True,
                     delay=.0,
                     gen_allowance=30,
-                    min_life=10,
+                    min_life=5,
                     max_life=512,
                     )
 
