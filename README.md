@@ -1,6 +1,6 @@
-# ConwaysGameOfLife_Visualizer
+# Conway's Game of Life Visualizer
 
-This is a visualizer for and 3-dimensional implementation of Conway's Game of Life implemented using PyQtGraph.
+This is a 3-dimensional implementation of and visualizer for Conway's Game of Life written using PyQtGraph.
 
 ## Usage:
 Run program with random seeds searching for new automata
